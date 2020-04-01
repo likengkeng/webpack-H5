@@ -42,7 +42,7 @@ npm init  :  初始化项目
 
 ├── babel-plugin-component      实现element-ui模块按需加载
 
-├── 
+├── webpack-bundle-analyzer     打包文件大小查看插件
 
 ├── 
 

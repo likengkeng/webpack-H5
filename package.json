@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "webpack-dev-server --config build/webpack.config.js --open",
     "build": "webpack --config build/webpack.config.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "analyz": "cross-env NODE_ENV=production npm_config_report=true npm run build"
   },
   "author": "",
   "license": "ISC",
@@ -16,11 +17,13 @@
     "autoprefixer": "^9.7.5",
     "babel-loader": "^8.1.0",
     "babel-plugin-component": "^1.1.1",
+    "cross-env": "^7.0.2",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "happypack": "^5.0.1",
     "postcss-loader": "^3.0.0",
     "vue": "^2.6.11",
     "webpack": "^4.41.5",
+    "webpack-bundle-analyzer": "^3.6.1",
     "webpack-cli": "^3.3.10"
   },
   "dependencies": {

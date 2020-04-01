@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge"> -->
     <meta charset="utf-8">
     <!-- <meta name="viewport" content="width=device-width,initial-scale=1.0"> -->
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
@@ -38,18 +35,21 @@
 <body>
     <div id='app'></div>
     <script>
-        //得到手机屏幕的宽度
-        let htmlWidth = document.documentElement.clientWidth || document.body.clientWidth;
-        console.log('htmlWidth',htmlWidth)
-        //得到html的Dom元素
-        let htmlDom = document.getElementsByTagName('html')[0];
-        // if(htmlWidth>640){//超过640大小的，字体根部都是16px
-        //   htmlWidth=640;
-        //   console.log('htmlWidth-true',htmlWidth)
-        // }
-        //设置根元素字体大小
-        htmlDom.style.fontSize = htmlWidth / 40 + 'px';
-    
+        function refreshRem(){
+            /*获取布局视口宽度,也可用document.documentElement.clientWidth*/
+            var width = document.documentElement.getBoundingClientRect().width;
+
+            /* 判断屏幕宽度，如果dpr为1且宽度>540 则恒定为540px，dpr为2如果宽度>1080则恒定为1080px*/
+
+            if (width / dpr > 540) {
+                width = 540 * dpr;
+            }
+
+            /*将布局视口宽度除以10得到html字体大小*/
+            var rem = width / 10;
+            document.documentElement.style.fontSize = rem + 'px';
+        }
+        refreshRem()
       </script>
 </body>
 </html>

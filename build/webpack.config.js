@@ -33,6 +33,7 @@ const HappyPack = require('happypack')
 const os = require('os')
 const happyThreadPool = HappyPack.ThreadPool({size: os.cpus().length})
 
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
     /** 开发模式 
@@ -178,6 +179,10 @@ module.exports = {
           // 允许 HappyPack 输出日志
           // verbose:true,
           threadPool: happyThreadPool //共享进程池
+        }),
+        new BundleAnalyzerPlugin({
+          analyzerHost: '127.0.0.1',
+          analyzerPort: 8889
         })
     ],
     /** loader配置
@@ -209,21 +214,24 @@ module.exports = {
             },
             {
                 test: /\.less$/,
-                // use: indexLess.extract({
-                //   use: ['css-loader','less-loader']
-                // })
-                use:[{
-                  loader:devMode ? 'vue-style-loader' : MiniCssExtractPlugin.loader,
-                  options:{
-                    publicPath:"../dist/css/",
-                    hmr:devMode
-                  }
-                },'css-loader','less-loader',{
+                use: ['vue-style-loader','css-loader',{
                   loader:'postcss-loader',
                   options:{
                     plugins:[require('autoprefixer')]
                   }
-                }]
+                },'less-loader']
+                // use:[{
+                //   loader:devMode ? 'vue-style-loader' : MiniCssExtractPlugin.loader,
+                //   options:{
+                //     publicPath:"../dist/css/",
+                //     hmr:devMode
+                //   }
+                // },'css-loader','less-loader',{
+                //   loader:'postcss-loader',
+                //   options:{
+                //     plugins:[require('autoprefixer')]
+                //   }
+                // }]
             },
             {
                 test: /\.(jpe?g|png|gif)$/i, //图片文件

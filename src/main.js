@@ -2,6 +2,9 @@
 import Vue from 'vue'
 import App from './app'
 import router from './router'
+
+import '@/assets/comm.less'
+
 import element from './element/index'
 Vue.use(element)
 new Vue({

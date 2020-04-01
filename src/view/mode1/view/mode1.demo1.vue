@@ -1,6 +1,6 @@
 <template>
     <div>
-        <p>这是mode1.demo1页面</p>
+        <p class='size size16'>这是mode1.demo1页面</p>
         <!-- <img :src="img" alt=""> -->
         <el-button>默认按钮</el-button>
         <el-button type="primary">主要按钮</el-button>
@@ -29,5 +29,8 @@
     }
 </script>
 <style scoped>
-
+    .size{
+        font-size: 16px;
+        width: 174px;
+    }
 </style>
